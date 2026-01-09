@@ -246,38 +246,20 @@ class _KanaRandomPageState extends State<KanaRandomPage> {
               ),
               const SizedBox(height: 8),
 
-             // ===== 中央に大きな文字 + 左上に音声ボタン =====
-SizedBox(
-  height: 320, // 中央ブロックの高さ（好みで調整）
-  child: Center(
-    child: Stack(
-      alignment: Alignment.center,
-      children: [
-        // かな文字（中央・大きく）
-        Text(
-          current,
-          textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 200, // ← ここを大きく
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-
-        // 音声ボタン（左上に配置）
-        Positioned(
-          top: 0,
-          left: 0,
-          child: IconButton(
-            icon: const Icon(Icons.volume_up),
-            iconSize: 48,
-            onPressed: speakCurrent,
-            tooltip: '発音',
-          ),
-        ),
-      ],
-    ),
-  ),
-),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(current, style: const TextStyle(fontSize: 120)),
+                  const SizedBox(width: 12),
+                  IconButton(
+                    icon: const Icon(Icons.volume_up),
+                    iconSize: 48,
+                    onPressed: speakCurrent,
+                    tooltip: '発音',
+                  ),
+                ],
+              ),
 
               const SizedBox(height: 8),
               ElevatedButton(
